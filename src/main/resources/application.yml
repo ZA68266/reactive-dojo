@@ -1,2 +1,9 @@
 server:
   port: 8080
+
+spring:
+  profiles: local
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5433/yugabyte
+    username: yugabyte
+    password: yugabyte
