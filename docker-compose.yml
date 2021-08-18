@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  database:
+    image: "yugabytedb/yugabyte:latest"
+    command: "/home/yugabyte/bin/yugabyted start --daemon=false"
+    environment:
+      SERVICE_5433_NAME: ysql
+      SERVICE_9042_NAME: ycql
+      SERVICE_9000_NAME: yb-tserver
+    ports:
+      - 9042:9042
+      - 5433:5433
+      - 9000:9000
+      - 7000:7000
+    volumes:
+      - database-data:/home/yugabyte/var
+
+volumes:
+  database-data:
