@@ -1,15 +1,21 @@
 package com.example.reactivedojo.models;
 
-public class Product {
-    private int id;
-    private String name;
-    private double price;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-    public Product(String name) {
-        this.id = 1;
-        this.name = name;
-        this.price = 0;
-    }
+@Table("product")
+public class Product {
+
+    @Id
+    @Column(value = "id")
+    private int id;
+
+    @Column(value = "name")
+    private String name;
+
+    @Column(value = "price")
+    private double price;
 
     public int getId() {
         return id;

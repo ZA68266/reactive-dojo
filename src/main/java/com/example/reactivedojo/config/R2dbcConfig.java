@@ -17,7 +17,7 @@ public class R2dbcConfig extends AbstractR2dbcConfiguration {
 
     @Value("${spring.r2dbc.datasource.host:localhost}")
     private String host;
-    @Value("${spring.r2dbc.port:5432}")
+    @Value("${spring.r2dbc.port:5433}")
     private int port;
     @Value("${spring.r2dbc.database:yugabyte}")
     private String database;
@@ -34,7 +34,7 @@ public class R2dbcConfig extends AbstractR2dbcConfiguration {
     }
 
     @Bean
-    DatabaseClient databaseClient(ConnectionFactory connectionFactory) {
+    DatabaseClient r2dbcDatabaseClient(ConnectionFactory connectionFactory) {
         return DatabaseClient.builder().connectionFactory(connectionFactory).namedParameters(true).build();
     }
 }
